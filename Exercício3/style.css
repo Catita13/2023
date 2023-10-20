@@ -30,7 +30,7 @@ nav li:hover ul,
 nav li ul:hover,
 nav li a:hover {
     display: block;
-    color: yellow;
+    color: gold;
 }
 
 nav li ul a {

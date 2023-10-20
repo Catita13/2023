@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 4</title>
+</head>
+
+<body>
+  <section id="enunciado">
+    <h1>Jogo da Adivinha</h1>
+  </section>
+  <section id="jogo">
+    <form>
+      <label for="tentativa">Número: </label>
+      <input type="number" name="tentativa" id="tentativa">
+      <input type="button" value="Adivinhar!" onclick="adivinharNumero()">
+    </form>
+    <h3>Tentativas:</h3>
+    <ul id="tentativas">
+    </ul>
+  </section>
+
+  <script>
+    const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+    let tentativas = 0;
+
+    function adivinharNumero() {
+      const tentativa = parseInt(document.getElementById("tentativa").value);
+      const listaTentativas = document.getElementById("tentativas");
+
+      const li = document.createElement("li");
+      li.textContent = `Tentativa #${++tentativas}: ${tentativa}`;
+
+      if (tentativa === numeroAleatorio) {
+        li.textContent += " - Parabéns, você acertou!";
+        li.style.color = "green";
+        document.getElementById("tentativa").disabled = true;
+      } else if (tentativa > numeroAleatorio) {
+        li.textContent += " - Muito alto";
+        li.style.color = "red";
+      } else {
+        li.textContent += " - Muito baixo";
+        li.style.color = "blue";
+      }
+
+      listaTentativas.appendChild(li);
+    }
+  </script>
+</body>
+</html>

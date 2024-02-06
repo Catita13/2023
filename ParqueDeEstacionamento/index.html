@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Lot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .navbar {
+            background-color: white;
+            padding: 10px;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            width: 100px;
+        }
+        .slogan {
+            margin-left: auto;
+            font-style: italic;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        button.register-entry {
+            background-color: #3498db;
+            color: white;
+        }
+        button.exit-parking-lot {
+            background-color: #e74c3c;
+            color: white;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="logo.webp" alt="Logo" class="logo">
+        <p class="slogan">Parking Lot</p>
+    </nav>
+    <form id="parkingForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="carBrand">Car Brand:</label>
+        <input type="text" id="carBrand" required>
+
+        <label for="carPlate">Car Plate:</label>
+        <input type="text" id="carPlate" required>
+
+        <label for="carClass">Car Class:</label>
+        <select id="carClass" required>
+            <option value="1">Class 1</option>
+            <option value="2">Class 2</option>
+        </select>
+
+        <label for="entryDate">Entry Date:</label>
+        <input type="datetime-local" id="entryDate" required>
+
+        <button type="button" class="register-entry" onclick="registerEntry()">Register Entry</button>
+    </form>
+
+    <div id="output">
+        <h3>Registered Cars:</h3>
+        <ul id="carList"></ul>
+        <label for="exitCar">Select Car to Exit:</label>
+        <select id="exitCar"></select>
+        <button type="button" class="exit-parking-lot" onclick="calculateCost()">Exit Parking Lot</button>
+        <p id="costOutput"></p>
+    </div>
+
+    <script>
+        let cars = [];
+
+        // Check if data is available in localStorage on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("parkingData")) {
+                cars = JSON.parse(localStorage.getItem("parkingData"));
+                updateCarList();
+                updateExitCarDropdown();
+            }
+        });
+
+        function saveToLocalStorage() {
+            localStorage.setItem("parkingData", JSON.stringify(cars));
+        }
+
+        function registerEntry() {
+            const name = document.getElementById('name').value;
+            const carBrand = document.getElementById('carBrand').value;
+            const carPlate = document.getElementById('carPlate').value;
+            const carClass = document.getElementById('carClass').value;
+            const entryDate = new Date(document.getElementById('entryDate').value);
+
+            cars.push({
+                name,
+                carBrand,
+                carPlate,
+                carClass,
+                entryDate
+            });
+
+            // Clear form inputs after registration
+            document.getElementById('name').value = '';
+            document.getElementById('carBrand').value = '';
+            document.getElementById('carPlate').value = '';
+            document.getElementById('carClass').value = '1';
+            document.getElementById('entryDate').value = '';
+
+            updateCarList();
+            updateExitCarDropdown();
+            saveToLocalStorage();
+        }
+
+        function updateCarList() {
+            const carList = document.getElementById('carList');
+            carList.innerHTML = '';
+
+            cars.forEach((car, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${car.name} - ${car.carBrand} - ${car.carPlate} - Class ${car.carClass} - ${car.entryDate.toLocaleString()}`;
+                carList.appendChild(listItem);
+            });
+        }
+
+        function updateExitCarDropdown() {
+            const exitCarDropdown = document.getElementById('exitCar');
+            exitCarDropdown.innerHTML = '';
+
+            cars.forEach((car, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `${car.name} - ${car.carPlate}`;
+                exitCarDropdown.appendChild(option);
+            });
+        }
+
+        function calculateCost() {
+            const exitCarIndex = document.getElementById('exitCar').value;
+            const exitDate = new Date();
+            const costOutput = document.getElementById('costOutput');
+            costOutput.innerHTML = '';
+
+            if (exitCarIndex !== '') {
+                const selectedCar = cars[exitCarIndex];
+                const timeDifference = Math.ceil((exitDate - selectedCar.entryDate) / (1000 * 60)); // in minutes
+
+                const cost = (selectedCar.carClass === '1') ? timeDifference * 0.01 : timeDifference * 0.02;
+
+                costOutput.innerHTML = `${selectedCar.name} - ${selectedCar.carPlate} - Time: ${timeDifference} min - Cost: ${cost.toFixed(2)}€`;
+
+                // Remove the exited car from the array
+                cars.splice(exitCarIndex, 1);
+
+                // Clear registered cars after calculating cost
+                updateCarList();
+                updateExitCarDropdown();
+                saveToLocalStorage();
+            } else {
+                costOutput.innerHTML = 'Please select a car to exit.';
+            }
+        }
+    </script>
+</body>
+</html>

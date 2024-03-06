@@ -1,0 +1,41 @@
+body {
+    background-color: bisque;
+}
+
+img {
+    width: 400px;
+    height: 300px;
+}
+
+input[type=submit],
+input[type=reset] {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+input[type=button] {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+table th {
+    background-color: green;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}

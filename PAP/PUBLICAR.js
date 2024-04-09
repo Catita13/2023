@@ -9,7 +9,7 @@ function uploadPhoto() {
 
     // Check if a photo is selected
     if (photoInput.files.length === 0) {
-        alert("Please select a photo.");
+        alert("Por favor, escolhe uma fotografia.");
         return;
     }
 

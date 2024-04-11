@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babylon.js Example</title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the canvas element
+            var canvas = document.getElementById("renderCanvas");
+
+            // Create Babylon.js engine
+            var engine = new BABYLON.Engine(canvas, true);
+
+            // Create a scene
+            var scene = new BABYLON.Scene(engine);
+
+            // Create a camera
+            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 5, -10), scene);
+            camera.setTarget(BABYLON.Vector3.Zero());
+            camera.attachControl(canvas, true);
+
+            // Create a light
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+            // Create a cube
+            var box = BABYLON.MeshBuilder.CreateBox("box", { size: 2 }, scene);
+
+            // Create a material and assign it to the cube
+            var material = new BABYLON.StandardMaterial("material", scene);
+            material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+            box.material = material;
+
+            // Define an animation for the cube
+            var animationBox = new BABYLON.Animation("animationBox", "rotation.y", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+            var keys = [];
+            keys.push({
+                frame: 0,
+                value: 0
+            });
+            keys.push({
+                frame: 100,
+                value: Math.PI * 2
+            });
+            animationBox.setKeys(keys);
+            box.animations = [];
+            box.animations.push(animationBox);
+
+            // Run the render loop
+            engine.runRenderLoop(function () {
+                scene.render();
+            });
+
+            // Watch for browser/canvas resize events
+            window.addEventListener("resize", function () {
+                engine.resize();
+            });
+        });
+    </script>
+    <canvas id="renderCanvas"></canvas>
+</body>
+</html>

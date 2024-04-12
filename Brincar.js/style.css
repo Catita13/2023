@@ -1,0 +1,93 @@
+#header {
+    background-color: #333; /* Background color */
+    color: white; /* Text color */
+    padding: 10px; /* Padding around the header content */
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+}
+
+.headerContent {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+}
+
+.headerContent img {
+    width: 48px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Margin to separate logo from text */
+}
+
+#headerType {
+    font-size: 1.2em; /* Font size for the header text */
+}
+
+/* Styling for the first block */
+#block_1 {
+    margin-bottom: 20px;
+}
+
+#block_1 h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#block_1 p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Styling for the second block */
+#bg1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#block_2, #block_3 {
+    flex-basis: 48%;
+}
+
+#block_2 h1, #block_3 h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#block_2 p, #block_3 p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Styling for the third block */
+#bg2 {
+    margin-bottom: 20px;
+}
+
+#block_4 h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#block_4 p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Styling for the fourth block */
+#bg3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#block_5, #block_6 {
+    flex-basis: 48%;
+}
+
+#block_5 h1, #block_6 h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#block_5 p, #block_6 p {
+    font-size: 16px;
+    line-height: 1.5;
+}

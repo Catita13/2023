@@ -1,0 +1,79 @@
+<div class="column2">
+    <h3 class="transparent-heading"><a>Contacts</a></h3>
+    <p><a href="https://www.linkedin.com/company/miragevirtualreality/">Linkedin</a></p>
+    <p><a href="https://www.behance.net/miragevr">Behance</a></p>
+    <p><a href="https://www.youtube.com/channel/UCnKbAgZdW097vA5GFpBSYxw">Youtube</a></p>
+    <p><a href="https://www.instagram.com/miragevirtualreality/">Instagram</a></p>
+    <p><a href="https://www.facebook.com/MirageVReality">Facebook</a></p>
+</div>
+
+@media (min-width: 769px) and (max-width: 1670px) {
+    .column2 {
+        margin-left: 40px;
+    }
+}
+
+.wp-container-1 {
+    display: flex;
+    align-items: center;
+}
+
+.wp-social-link {
+    list-style: none;
+    margin-right: 13px;
+    text-align: left;
+}
+
+.wp-block-social-link-anchor {
+    text-decoration: none;
+}
+
+.wp-block-social-link svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.wp-block-social-link:hover svg {
+    fill: #0f5e71;
+}
+
+.wp-social-link-linkedin {
+    fill: #0f5e71; 
+}
+
+.wp-social-link-behance {
+    fill: #0f5e71; 
+}
+
+.wp-social-link-youtube {
+    fill: #0f5e71; 
+}
+
+.wp-social-link-instagram {
+    fill: #0f5e71; 
+}
+
+.wp-social-link-facebook {
+    fill: #0f5e71;
+}
+
+.wp-container-1 {
+    display: flex;
+    justify-content: left;
+}
+
+.wp-block-social-links {
+    display: flex;
+    gap: 13px;
+} 
+
+.wp-social-link {
+    width: 24px;
+    height: 24px;
+    fill: white; 
+}
+
+.wp-container-1:hover .wp-social-link {
+    fill: #0f5e71;
+}

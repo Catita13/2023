@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Logo.png">
+    <link rel="stylesheet" href="LOGIN.css">
+    <script src="LOGIN.js"></script>
+    <title>Sports4Sustainability</title>
+</head>
+<body>
+    <nav>
+        <a><img src="LogoNAV.png" alt="Logo"></a>
+        <ul>
+            <li><a href="javascript:void(0);" onclick="refreshPage();" style="font-weight: bold; color: #000; text-decoration: none;">LOGIN</a></li>
+            <li><a href="REGISTER.html">REGISTRAR</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br><br>
+            <button href="HOME.html" type="submit">Login</button>
+        </form>
+
+        <p> Don't have an account? <a href="REGISTER.html">Registrar</a></p>
+    </div>
+</body> 
+</html>

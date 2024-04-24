@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Chat App</title>
+  <style scoped>
+    .chat-app {
+      font-family: Arial, sans-serif;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 400px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .chat-header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .chat-messages {
+      height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .chat-messages ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .chat-messages li {
+      margin-bottom: 5px;
+    }
+
+    .chat-messages li span {
+      font-weight: bold;
+    }
+
+    .chat-input {
+      margin-top: 10px;
+    }
+
+    .chat-input input[type="text"] {
+      width: calc(100% - 60px);
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .chat-input button {
+      width: 50px;
+      padding: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="chat-app">
+    <div class="chat-header">
+      <h2>Vue.js Chat App</h2>
+    </div>
+    <div class="chat-messages">
+      <ul>
+        <li v-for="message in messages">
+          <span>{{ message.user }}:</span> {{ message.text }}
+        </li>
+      </ul>
+    </div>
+    <div class="chat-input">
+      <input type="text" v-model="newMessage" placeholder="Type your message...">
+      <button @click="sendMessage">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      messages: [],
+      newMessage: ''
+    },
+    methods: {
+      sendMessage() {
+        if (this.newMessage.trim() !== '') {
+          this.messages.push({ user: 'Me', text: this.newMessage });
+          this.newMessage = '';
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
+    
+  

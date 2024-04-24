@@ -3,112 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue.js Chat App</title>
-  <style scoped>
-    .chat-app {
-      font-family: Arial, sans-serif;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 400px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-
-    .chat-header {
-      background-color: #007bff;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-    }
-
-    .chat-messages {
-      height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-    }
-
-    .chat-messages ul {
-      list-style-type: none;
+  <title>Cryptocurrency Price Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       padding: 0;
+      background-color: #f0f0f0;
     }
 
-    .chat-messages li {
-      margin-bottom: 5px;
+    .dashboard {
+      width: 80%;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
     }
 
-    .chat-messages li span {
-      font-weight: bold;
+    h1 {
+      text-align: center;
+      color: #4CAF50;
     }
 
-    .chat-input {
+    .prices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .price {
+      width: 200px;
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #4CAF50;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #f0f8ff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .price span {
+      display: block;
       margin-top: 10px;
+      font-size: 18px;
+      color: #4CAF50;
     }
 
-    .chat-input input[type="text"] {
-      width: calc(100% - 60px);
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .chat-input button {
-      width: 50px;
-      padding: 5px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .chat-input button:hover {
-      background-color: #0056b3;
-    }
   </style>
 </head>
 <body>
-
-<div id="app">
-  <div class="chat-app">
-    <div class="chat-header">
-      <h2>Vue.js Chat App</h2>
-    </div>
-    <div class="chat-messages">
-      <ul>
-        <li v-for="message in messages">
-          <span>{{ message.user }}:</span> {{ message.text }}
-        </li>
-      </ul>
-    </div>
-    <div class="chat-input">
-      <input type="text" v-model="newMessage" placeholder="Type your message...">
-      <button @click="sendMessage">Send</button>
+  <div id="app">
+    <div class="dashboard">
+      <h1>Cryptocurrency Price Dashboard</h1>
+      <div class="prices">
+        <div v-for="(price, symbol) in cryptocurrencyPrices" :key="symbol" class="price">
+          <span>{{ symbol.toUpperCase() }}</span>
+          <span>{{ price }}</span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script>
-  new Vue({
-    el: '#app',
-    data: {
-      messages: [],
-      newMessage: ''
-    },
-    methods: {
-      sendMessage() {
-        if (this.newMessage.trim() !== '') {
-          this.messages.push({ user: 'Me', text: this.newMessage });
-          this.newMessage = '';
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        cryptocurrencyPrices: {}
+      },
+      created() {
+        this.fetchCryptocurrencyPrices();
+        setInterval(this.fetchCryptocurrencyPrices, 5000); // Update prices every 5 seconds
+      },
+      methods: {
+        async fetchCryptocurrencyPrices() {
+          try {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,litecoin,cardano,dogecoin&vs_currencies=usd');
+            const data = await response.json();
+            this.cryptocurrencyPrices = data;
+          } catch (error) {
+            console.error('Error fetching cryptocurrency prices:', error);
+          }
         }
       }
-    }
-  });
-</script>
-
+    });
+  </script>
 </body>
 </html>
-    
-  

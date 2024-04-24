@@ -33,3 +33,50 @@ a:hover {
 img {
     height: 75px; /* Set the height of the logo image */
 }
+
+.photos {
+    display: flex;
+    flex-direction: column; /* Display publications in a single column */
+    align-items: center; /* Center publications horizontally */
+    margin-top: 20px; /* Add space from the nav */
+    max-width: 800px; /* Limit the maximum width of the column */
+    margin: 0 auto; /* Center the column horizontally */
+    overflow-y: auto; /* Add vertical scrolling */
+}
+
+.publication {
+    width: 100%; /* Set width for each publication */
+    margin-bottom: 20px; /* Add space between publications */
+    padding: 20px; /* Add padding inside each publication */
+    background-color: #f9f9f9; /* Set background color for publications */
+    border-radius: 10px; /* Add border radius to create rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for a card-like effect */
+}
+
+.publication img {
+    width: 100%; /* Make the image inside each publication fill its container */
+    border-radius: 10px; /* Add border radius to image */
+}
+
+.comment-section {
+    margin-top: 10px; /* Add space between image and comment section */
+}
+
+.comment {
+    margin-top: 5px; /* Add space between comments */
+    font-size: 14px; /* Adjust font size of comments */
+}
+
+.like-button {
+    background-color: #008037;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px; /* Add space between comments and like button */
+}
+
+.like-button:hover {
+    background-color: #005e29;
+}

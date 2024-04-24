@@ -33,3 +33,29 @@ a:hover {
 img {
     height: 75px; /* Set the height of the logo image */
 }
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px; /* Add space from the nav */
+}
+
+.photo {
+    width: 300px; /* Set width for each publication */
+    margin: 10px; /* Add space between publications */
+    padding: 20px; /* Add padding inside each publication */
+    background-color: #f9f9f9; /* Set background color for publications */
+    border-radius: 10px; /* Add border radius to create rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for a card-like effect */
+}
+
+.photo img {
+    width: 100%;/* Make the image inside each publication fill its container */
+    height: auto;
+    border-radius: 5px; /* Add border radius to image */
+}
+
+.photo .comment {
+    margin-top: 10px; /* Add space between image and comment */
+}

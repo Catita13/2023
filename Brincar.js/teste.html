@@ -1,59 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customizable 3D Phrase</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-        canvas {
-            display: block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .calculator {
+        width: 350px; /* Increased width */
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    input[type="button"] {
+        width: 60px; /* Increased width */
+        height: 60px; /* Increased height */
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #ccc;
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 10px);
+        height: 50px; /* Increased height */
+        margin: 5px;
+        padding: 5px;
+        font-size: 20px;
+        text-align: right;
+    }
+
+    input[type="button"]:hover {
+        background-color: #bbb;
+    }
+
+    input[type="button"]:active {
+        background-color: #aaa;
+    }
+
+    .history {
+        margin-top: 30px; /* Increased margin */
+        text-align: left;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px; /* Increased padding */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .history h3 {
+        margin-top: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .history button {
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .history button:hover {
+        background-color: #d32f2f;
+    }
+
+    .history ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .history ul li {
+        margin-bottom: 5px;
+        font-size: 16px;
+        color: #666;
+    }
+</style>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Scene
-        const scene = new THREE.Scene();
-        
-        // Camera
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
+<div class="calculator">
+    <input type="text" id="display" readonly>
+    <br>
+    <input type="button" value="7" onclick="appendToDisplay('7')">
+    <input type="button" value="8" onclick="appendToDisplay('8')">
+    <input type="button" value="9" onclick="appendToDisplay('9')">
+    <input type="button" value="/" onclick="appendToDisplay('/')">
+    <br>
+    <input type="button" value="4" onclick="appendToDisplay('4')">
+    <input type="button" value="5" onclick="appendToDisplay('5')">
+    <input type="button" value="6" onclick="appendToDisplay('6')">
+    <input type="button" value="*" onclick="appendToDisplay('*')">
+    <br>
+    <input type="button" value="1" onclick="appendToDisplay('1')">
+    <input type="button" value="2" onclick="appendToDisplay('2')">
+    <input type="button" value="3" onclick="appendToDisplay('3')">
+    <input type="button" value="-" onclick="appendToDisplay('-')">
+    <br>
+    <input type="button" value="0" onclick="appendToDisplay('0')">
+    <input type="button" value="." onclick="appendToDisplay('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="+" onclick="appendToDisplay('+')">
+    <br>
+    <input type="button" value="C" onclick="clearDisplay()">
+</div>
 
-        // Renderer
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+<div class="history">
+    <h3>History</h3>
+    <button onclick="clearHistory()">Clear History</button>
+    <ul id="historyList"></ul>
+</div>
 
-        // Font loader
-        const loader = new THREE.FontLoader();
-        loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
-            const textGeometry = new THREE.TextGeometry('Eu sou o maior!', {
-                font: font,
-                size: 0.5,
-                height: 0.1,
-                curveSegments: 12,
-                bevelEnabled: true,
-                bevelThickness: 0.03,
-                bevelSize: 0.02,
-                bevelOffset: 0,
-                bevelSegments: 5
-            });
-            const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-            const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-            scene.add(textMesh);
-        });
+<script>
+function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
 
-        // Animation
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+function calculate() {
+    var expression = document.getElementById('display').value;
+    var result = eval(expression);
+    document.getElementById('display').value = result;
+
+    // Store calculation in history
+    var history = localStorage.getItem('calculatorHistory');
+    history = history ? JSON.parse(history) : [];
+    history.push(expression + ' = ' + result);
+    localStorage.setItem('calculatorHistory', JSON.stringify(history));
+    displayHistory();
+}
+
+function displayHistory() {
+    var history = localStorage.getItem('calculatorHistory');
+    history = history ? JSON.parse(history) : [];
+    var historyList = document.getElementById('historyList');
+    historyList.innerHTML = '';
+    history.forEach(function(item) {
+        var li = document.createElement('li');
+        li.textContent = item;
+        historyList.appendChild(li);
+    });
+}
+
+function clearHistory() {
+    localStorage.removeItem('calculatorHistory');
+    displayHistory();
+}
+
+// Display history when page loads
+displayHistory();
+</script>
 </body>
 </html>

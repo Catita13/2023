@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extravagant Todo List</title>
+    <style>
+        body {
+            background-color: #333;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00cc88;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #00aa77;
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .todo-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .todo-list li input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .todo-name {
+            flex: 1;
+        }
+
+        .todo-category, .todo-priority {
+            margin-right: 10px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+        }
+
+        .filter {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter select {
+            padding: 8px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .filter label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" ng-app="todoApp" ng-controller="TodoController as todoCtrl">
+        <h1>To Do List</h1>
+        <form ng-submit="todoCtrl.addTodo()">
+            <input type="text" ng-model="todoCtrl.newTodo.text" placeholder="Add new task" required>
+            <select ng-model="todoCtrl.newTodo.category" ng-options="category for category in todoCtrl.categories">
+                <option value="">Select Category</option>
+            </select>
+            <select ng-model="todoCtrl.newTodo.priority" ng-options="priority for priority in todoCtrl.priorities">
+                <option value="">Select Priority</option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        <div class="filter">
+            <label>Filter by Category:</label>
+            <select ng-model="todoCtrl.categoryFilter">
+                <option value="">All</option>
+                <option ng-repeat="category in todoCtrl.categories" ng-value="category">{{ category }}</option>
+            </select>
+            <label>Filter by Priority:</label>
+            <select ng-model="todoCtrl.priorityFilter">
+                <option value="">All</option>
+                <option ng-repeat="priority in todoCtrl.priorities" ng-value="priority">{{ priority }}</option>
+            </select>
+        </div>
+        <ul class="todo-list">
+            <li ng-repeat="todo in todoCtrl.todos | filter: { category: todoCtrl.categoryFilter, priority: todoCtrl.priorityFilter }">
+                <input type="checkbox" ng-model="todo.completed">
+                <span class="todo-name" ng-class="{ 'completed': todo.completed }">{{ todo.text }}</span>
+                <span class="todo-category">{{ todo.category }}</span>
+                <span class="todo-priority">{{ todo.priority }}</span>
+                <button ng-click="todoCtrl.removeTodo(todo)">Remove</button>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('todoApp', [])
+            .controller('TodoController', function() {
+                var todoCtrl = this;
+
+                todoCtrl.categories = ['Work', 'Personal', 'Errands', 'Study'];
+                todoCtrl.priorities = ['High', 'Medium', 'Low'];
+
+                todoCtrl.todos = [
+                    { text: 'Finish project proposal', category: 'Work', priority: 'High', completed: false },
+                    { text: 'Go to the gym', category: 'Personal', priority: 'Medium', completed: false },
+                    { text: 'Buy groceries', category: 'Errands', priority: 'Low', completed: false },
+                    { text: 'Read a book', category: 'Study', priority: 'Medium', completed: false }
+                ];
+
+                todoCtrl.addTodo = function() {
+                    if (todoCtrl.newTodo.text && todoCtrl.newTodo.category && todoCtrl.newTodo.priority) {
+                        todoCtrl.todos.push({
+                            text: todoCtrl.newTodo.text,
+                            category: todoCtrl.newTodo.category,
+                            priority: todoCtrl.newTodo.priority,
+                            completed: false
+                        });
+                        todoCtrl.newTodo = {};
+                    }
+                };
+
+                todoCtrl.removeTodo = function(todo) {
+                    var index = todoCtrl.todos.indexOf(todo);
+                    if (index !== -1) {
+                        todoCtrl.todos.splice(index, 1);
+                    }
+                };
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            font-family: 'Roboto', sans-serif;
+            color: #fff; /* White text */
+        }
+
+        .container {
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .projects-card {
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #1e1e1e; /* Slightly darker background for projects */
+            border: 1px solid #444; /* Border color */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Shadow effect */
+        }
+
+        .projects-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .projects-card a {
+            color: #fff; /* White text */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .projects-card a:hover {
+            color: #00ff00; /* Neon green on hover */
+        }
+
+        .img-featured-project {
+            height: 300px;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.3); /* Inner glow effect */
+        }
+
+        .sector p {
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #aaa; /* Light gray text */
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #00ff00; /* Neon green border */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            background-color: #333; /* Darker background for search input */
+            color: #fff; /* White text */
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #ff00ff; /* Neon pink border on focus */
+        }
+
+        .search-results {
+            margin-top: 2rem;
+            color: #ccc; /* Light gray text for search results */
+        }
+
+        .search-results a {
+            color: #00ff00; /* Neon green text for search result links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .search-results a:hover {
+            color: #fff; /* White text on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 50px;">Projects</h1>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" oninput="searchProjects()" placeholder="Search for projects...">
+        </div>
+
+        <!-- Projects -->
+        <div class="row" id="projectsContainer">
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/elou/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2024/02/41184_screenshot_6_date_1707499986180.png)">
+                    </div>
+                    <h3>ELOU</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/concurso-gandarinha/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2024/02/ESTA-VILLA-1-scaled.jpg)">
+                    </div>
+                    <h3>Concurso Gandarinha</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/river-quarter/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/11/FachadaLateral_V04-scaled.jpg)">
+                    </div>
+                    <h3>River Quarter</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/cais5_3dvirtualtour_workplace/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/11/ROOFTOP_FINAL-scaled.jpg)">
+                    </div>
+                    <h3>CAIS 5</h3>
+                    <div class="sector">
+                        <p>Workplace</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/quinta-da-praia/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2024/02/ESTA-Copy-of-02_R02-min.png)">
+                    </div>
+                    <h3>Quinta Da Praia</h3>
+                    <div class="sector">
+                        <p>Hospitality</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/comporta-gssarquitectos/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/02/2-scaled.jpg)">
+                    </div>
+                    <h3>Comporta Retreat</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/rossio-62/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2020/11/ROSSIO-62_2.jpg)">
+                    </div>
+                    <h3>Rossio 62</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/aureum-comporta/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/04/Exterior-Deck.png)">
+                    </div>
+                    <h3>Aureum</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/santa-offices-complex/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2022/02/2-1-scaled.jpg)">
+                    </div>
+                    <h3>Santa Offices Complex</h3>
+                    <div class="sector">
+                        <p>Workplace</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/ocean-palace/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/04/1a-scaled.jpg)">
+                    </div>
+                    <h3>Ocean Palace</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/metropolitan-tower/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/08/Render-Nocturno-scaled.jpg)">
+                    </div>
+                    <h3>Metropolitan Tower</h3>
+                    <div class="sector">
+                        <p>Commercial</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 projects-card">
+                <a href="https://miragevirtualreality.com/projects/garden-of-eden/">
+                    <div class="img-featured-project"
+                        style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/02/Render-6-scaled.jpg)">
+                    </div>
+                    <h3>Garden of Eden</h3>
+                    <div class="sector">
+                        <p>Residential</p>
+                    </div>
+                </a>
+            </div>
+
+        <div class="row" id="projectsContainer">
+            <!-- Project Cards will be dynamically added here -->
+        </div>
+
+        <!-- Search Results -->
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function searchProjects() {
+            var input, filter, projectsContainer, projects, project, title, sector, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            projectsContainer = document.getElementById('projectsContainer');
+            projects = projectsContainer.getElementsByClassName('projects-card');
+
+            for (i = 0; i < projects.length; i++) {
+                project = projects[i];
+                title = project.querySelector('h3').textContent.toUpperCase();
+                sector = project.querySelector('.sector p').textContent.toUpperCase();
+
+                if (title.includes(filter) || sector.includes(filter)) {
+                    project.style.display = '';
+                } else {
+                    project.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

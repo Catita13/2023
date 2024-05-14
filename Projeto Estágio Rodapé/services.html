@@ -70,9 +70,50 @@
             font-weight: bold;
             color: #555; /* Dark gray text */
         }
+
+        /* Navigation bar styles */
+        .navbar-nav .nav-link {
+            color: #555 !important; /* Dark gray text */
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007bff !important; /* Blue on hover */
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">VR & AR</a>
+        <a class="navbar-brand" href="#">3D Virtual Tours</a>
+        <a class="navbar-brand" href="#">3D Video Animation</a>
+        <a class="navbar-brand" href="#">3D Still Images</a>
+        <a class="navbar-brand" href="#">3D Products</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gallery</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <main id="primary" class="site-main">
         <header class="page-header">
             <h1 class="page-title">3D Virtual Tours</h1>
@@ -83,6 +124,7 @@
         </header><!-- .page-header -->
         <div class="container">
             <div class="row">
+                <!-- Add the projects here -->
                 <!-- Add the projects here -->
                 <div class="col-md-4 projects-card">
                     <a href="https://miragevirtualreality.com/projects/avenida-fontes-pereira-de-mello-5/">
@@ -141,13 +183,12 @@
                 <div class="col-md-4 projects-card">
                     <a href="https://miragevirtualreality.com/projects/elou/">
                         <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2024/02/41184_screenshot_6_date_1707499986180.png)"></div>
-                        <h3>ÉLOU</h3>
+                        <h3>ELOU</h3>
                         <div class="sector">
                             <p>Residential</p>
                         </div>
                     </a>
                 </div>
-                <!-- Add more projects as needed -->
             </div>
         </div>
     </main><!-- #main -->

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined 3D Virtual Tours</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: linear-gradient(120deg, #2980b9, #8e44ad);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            padding-top: 50px;
+        }
+
+        .container {
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            color: #fff;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .archive-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .projects-card {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .projects-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .projects-card a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 20px;
+        }
+
+        .projects-card a:hover {
+            color: #f39c12;
+        }
+
+        .img-featured-project {
+            height: 300px;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.3);
+        }
+
+        .sector p {
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #00ff00;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #ff00ff;
+        }
+
+        .search-results {
+            margin-top: 2rem;
+            color: #ccc;
+        }
+
+        .search-results a {
+            color: #00ff00;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .search-results a:hover {
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: none;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            margin-right: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="https://miragevirtualreality.com/services/vr-ar/">🚀 VR & AR</a>
+            <a class="navbar-brand" href="https://miragevirtualreality.com/services/3d-virtual-tours/">🏰 3D Virtual Tours</a>
+            <a class="navbar-brand" href="https://miragevirtualreality.com/services/3d-video-animation/">🎥 3D Video Animation</a>
+            <a class="navbar-brand" href="https://miragevirtualreality.com/services/3d-still-images/">📸 3D Still Images</a>
+            <a class="navbar-brand" href="https://miragevirtualreality.com/services/3d-products/">🛍️ 3D Products</a>
+        </div>
+    </nav>
+
+    <main id="primary" class="site-main">
+        <header class="page-header">
+            <h1 class="page-title">Welcome to the World of 3D Virtual Tours!</h1>
+            <div class="archive-description">
+                <p style="text-align: justify;">3D Virtual Tours make the experience richer and more engaging by enabling the user to virtually enter the room and interact with specific add-ons, such as design details, project layout, furniture, materials, and light.</p>
+                <p style="text-align: justify;">These 3D House Tours come in the form of ready to deploy websites or APPs and can be integrated with any digital channel to track online users’ behavior, thus providing valuable data to enhance your marketing strategies.</p>
+            </div>
+        </header>
+        <div class="container">
+            <!-- Search Bar -->
+            <h1 style="text-align: center;" class="page-title">Projects</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" oninput="searchProjects()" placeholder="Search for projects...">
+            </div>
+
+            <!-- Projects -->
+            <div class="row" id="projectsContainer">
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/byliberdade/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2021/08/3-scaled.jpg)"></div>
+                        <h3>ByLiberdade</h3>
+                        <div class="sector">
+                            <p>🏠 Residential</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/archos-office/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2021/12/04.jpg)"></div>
+                        <h3>Archos Office</h3>
+                        <div class="sector">
+                            <p>🏢 Workplace</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/condominium-bougainville/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2022/02/Fachada-Frontal-scaled.jpg)"></div>
+                        <h3>Condominium Bougainville</h3>
+                        <div class="sector">
+                            <p>🏠 Residential</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/telhal72/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2022/04/Terraco-Noturno_V5_B-scaled.jpg)"></div>
+                        <h3>Telhal 72</h3>
+                        <div class="sector">
+                            <p>🏠 Residential</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/cais5_3dvirtualtour_workplace/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2023/11/ROOFTOP_FINAL-scaled.jpg)"></div>
+                        <h3>CAIS 5</h3>
+                        <div class="sector">
+                            <p>🏢 Workplace</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 projects-card">
+                    <a href="https://miragevirtualreality.com/projects/nexus-projects-archos/">
+                        <div class="img-featured-project" style="background-image:url(https://miragevirtualreality.com/wp-content/uploads/2021/10/First-1-scaled.jpg)"></div>
+                        <h3>Nexus Projects</h3>
+                        <div class="sector">
+                            <p>🏢 Workplace</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="text-align: center;">Mirage Virtual Reality</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Custom JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function searchProjects() {
+            // Declare variables
+            let input, filter, cards, cardContainer, title, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            cardContainer = document.getElementById("projectsContainer");
+            cards = cardContainer.getElementsByClassName("projects-card");
+
+            // Loop through all projects, and hide those who don't match the search query
+            for (i = 0; i < cards.length; i++) {
+                title = cards[i].querySelector(".projects-card h3");
+                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

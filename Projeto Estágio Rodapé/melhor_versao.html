@@ -9,27 +9,31 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background-image: linear-gradient(120deg, #2980b9, #8e44ad);
+            background-image: linear-gradient(135deg, #1e3c72, #2a5298);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
             padding-top: 50px;
+            overflow-x: hidden;
         }
 
         .container {
             margin: 2rem auto;
             max-width: 1200px;
+            padding: 0 1rem;
         }
 
         .page-header {
             text-align: center;
             margin-bottom: 40px;
+            animation: fadeInDown 1s ease-in-out;
         }
 
         .page-title {
-            color: #fff;
+            color: #ffd700;
             font-size: 36px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            animation: neonGlow 1.5s ease-in-out infinite alternate;
         }
 
         .archive-description {
@@ -42,11 +46,12 @@
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .projects-card {
             margin-bottom: 30px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 10px;
             overflow: hidden;
             background-color: rgba(255, 255, 255, 0.1);
@@ -54,11 +59,12 @@
         }
 
         .projects-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
         .projects-card a {
-            color: #fff;
+            color: #ffd700;
             text-decoration: none;
             transition: color 0.3s ease;
             display: block;
@@ -76,6 +82,12 @@
             background-repeat: no-repeat;
             background-position: center center;
             box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .projects-card:hover .img-featured-project {
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
 
         .sector p {
@@ -94,15 +106,17 @@
             padding: 12px;
             font-size: 16px;
             border-radius: 5px;
-            border: 1px solid #00ff00;
+            border: 1px solid #ffd700;
             box-sizing: border-box;
-            transition: border-color 0.3s ease;
-            background-color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #1e3c72;
             color: #fff;
+            outline: none;
         }
 
         .search-bar input[type="text"]:focus {
-            border-color: #ff00ff;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px #ffd700;
         }
 
         .search-results {
@@ -111,13 +125,14 @@
         }
 
         .search-results a {
-            color: #00ff00;
+            color: #ffd700;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .search-results a:hover {
             color: #fff;
+            text-shadow: 0 0 10px #ffd700;
         }
 
         .navbar {
@@ -128,15 +143,48 @@
         }
 
         .navbar-brand {
-            color: #fff;
+            color: #ffd700;
             font-weight: bold;
             margin-right: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .navbar-brand:hover {
             color: #f39c12;
+            text-shadow: 0 0 10px #f39c12;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #f39c12, 0 0 40px #f39c12, 0 0 50px #f39c12, 0 0 60px #f39c12, 0 0 70px #f39c12;
+            }
+            to {
+                text-shadow: 0 0 20px #ffd700, 0 0 30px #f39c12, 0 0 40px #f39c12, 0 0 50px #f39c12, 0 0 60px #f39c12, 0 0 70px #f39c12, 0 0 80px #f39c12;
+            }
         }
     </style>
 </head>

@@ -1,243 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Directory</title>
-  <link rel="shortcut icon" href="Apple.jpg">
+  <title>Footer Redesign</title>
   <style>
-    .ac-gf-directory {
-      display: flex;
-      flex-direction: column;
-      margin: 20px;
-      font-family: Arial, sans-serif;
-      height: 100vh;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
     }
-
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+    }
+    .footer-nav a {
+      color: #00FF00;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-nav a:hover {
+      color: #32CD32;
+    }
     .ac-gf-directory-column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      flex: 1 1 200px;
+      padding: 20px;
+      box-sizing: border-box;
     }
-
     .ac-gf-directory-column-section {
-      display: flex;
-      flex-direction: column;
       margin-bottom: 20px;
     }
-
     .ac-gf-directory-column-section-title {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
-      cursor: pointer;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #fff;
     }
-
-    .ac-gf-directory-column-section-title:hover {
-      background-color: #e0e0e0;
-    }
-
-    .ac-gf-directory-column-section-title-button {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
     .ac-gf-directory-column-section-list {
       list-style: none;
       padding: 0;
-      display: none;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.5s ease;
     }
-
     .ac-gf-directory-column-section-list.show {
-      display: block;
+      max-height: 500px;
+      padding-top: 10px;
     }
-
     .ac-gf-directory-column-section-link {
-      text-decoration: none;
-      color: #333;
-      transition: color 0.3s ease;
+      display: block;
+      padding: 5px 0; 
+      transition: padding-left 0.3s ease;
     }
-
     .ac-gf-directory-column-section-link:hover {
-      color: #007bff;
+      padding-left: 10px;
     }
-
     .arrow-down {
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #333;
-      margin-left: 5px;
-      transition: transform 0.3s ease;
+      border: solid #00FF00;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transition: transform 0.7s ease-in;
     }
-
-    .arrow-down.rotate {
-      transform: rotate(180deg);
+    .rotate {
+      transform: rotate(45deg);
+    }
+    button {
+      background: none;
+      border: none;
+      color: #00FF00;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    button:hover .arrow-down {
+      border-color: #32CD32;
     }
   </style>
 </head>
 <body>
+  <nav class="footer-nav" role="navigation">
+    <div class="ac-gf-directory-column">
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Comprar e saber mais</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-shopandlearn" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/store">Loja</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/mac/">Mac</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/ipad/">iPad</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/iphone/">iPhone</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/watch/">Watch</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/airpods/">AirPods</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/tv-home/">TV e Casa</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/airtag/">AirTag</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/buy_accessories">Acessórios</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/giftcards">Vales‑oferta</a></li>
+        </ul>
+      </div>
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Carteira da Apple</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-applewallet" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-pay/">Apple Pay</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-gf-directory-column">
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Conta</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-accounts" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="https://appleid.apple.com/pt/">Gerir o seu ID Apple</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/account">Conta da Apple Store</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="https://www.icloud.com">iCloud.com</a></li>
+        </ul>
+      </div>
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Entretenimento</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-entertainment" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-one/">Apple One</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-tv-plus/">Apple TV+</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-music/">Apple Music</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-arcade/">Apple Arcade</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/apple-fitness-plus/">Apple Fitness+</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/app-store/">App Store</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-gf-directory-column">
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Apple Store</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-storeservices" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="https://apps.apple.com/pt/app/apple-store/id375380948">App Apple Store</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/order/list">Estado das encomendas</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/help">Ajuda para comprar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-gf-directory-column">
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Empresas</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-business" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/business/">Apple e as empresas</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/business/small-business">Comprar para a sua empresa</a></li>
+        </ul>
+      </div>
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Educação</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-education" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/education/">Apple na educação</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/educationrouting">Compre para a universidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-gf-directory-column">
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Valores da Apple</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-responsibility" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/accessibility/">Acessibilidade</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/environment/">Ambiente</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/privacy/">Privacidade</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/supplier-responsibility/">Responsabilidade dos fornecedores</a></li>
+        </ul>
+      </div>
+      <div class="ac-gf-directory-column-section">
+        <h3 class="ac-gf-directory-column-section-title">
+          <span>Acerca da Apple</span>
+          <button class="ac-gf-directory-column-section-title-button">
+            <span class="arrow-down"></span>
+          </button>
+        </h3>
+        <ul id="footer-directory-column-section-about" class="ac-gf-directory-column-section-list" role="list">
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/newsroom/">Newsroom</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/leadership/">Liderança Apple</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/careers/pt/">Oportunidades de carreira</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/legal/warranty/statutoryrights.html">Garantia Legal</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="https://investor.apple.com/">Investidores</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/compliance/">Ética e conformidade</a></li>
+          <li><a class="ac-gf-directory-column-section-link" href="/pt/contact/">Contactar a Apple</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<nav class="ac-gf-directory with-5-columns" aria-label="Diretório Apple" role="navigation">
-		<!--googleoff: all-->
-		<div class="ac-gf-directory-column">
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Descobrir e comprar</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-products" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/store" data-analytics-title="store">Loja</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/mac/" data-analytics-title="mac">Mac</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/ipad/" data-analytics-title="ipad">iPad</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/iphone/" data-analytics-title="iphone">iPhone</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/watch/" data-analytics-title="watch">Watch</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/airpods/" data-analytics-title="airpods">AirPods</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/tv-home/" data-analytics-title="tv and home">TV e Casa</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/airtag/" data-analytics-title="airtag">AirTag</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/buy_accessories" data-analytics-title="accessories">Acessórios</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/giftcards" data-analytics-title="gift cards">Vales‑oferta</a></li>
-				</ul>
-			</div>
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Carteira da Apple</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-applewallet" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-pay/" data-analytics-title="apple pay">Apple Pay</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="ac-gf-directory-column">
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Conta</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-accounts" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="https://appleid.apple.com/pt/" data-analytics-title="manage your apple id" data-analytics-exit-link>Gerir o seu ID Apple</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/account" data-analytics-title="apple store account">Conta da Apple Store</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="https://www.icloud.com" data-analytics-title="icloud.com" data-analytics-exit-link>iCloud.com</a></li>
-				</ul>
-			</div>
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Entretenimento</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-entertainment" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-one/" data-analytics-title="apple one">Apple One</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-tv-plus/" data-analytics-title="apple tv plus">Apple TV+</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-music/" data-analytics-title="apple music">Apple Music</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-arcade/" data-analytics-title="apple arcade">Apple Arcade</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/apple-fitness-plus/" data-analytics-title="apple fitness plus">Apple Fitness+</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/app-store/" data-analytics-title="app store">App Store</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="ac-gf-directory-column">
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Apple Store</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-storeservices" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="https://apps.apple.com/pt/app/apple-store/id375380948" data-analytics-title="apple store app" data-analytics-exit-link>App Apple Store</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/order/list" data-analytics-title="order status">Estado das encomendas</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/help" data-analytics-title="shopping help">Ajuda para comprar</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="ac-gf-directory-column">
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Empresas</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-business" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/business/" data-analytics-title="apple and business">Apple nas empresas</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/smb" data-analytics-title="shop for business">Comprar para a sua empresa</a></li>
-				</ul>
-			</div>
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Educação</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-education" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/education/" data-analytics-title="apple and education">Apple na educação</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/shop/goto/educationrouting" data-analytics-title="shop for university">Compre para a universidade</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="ac-gf-directory-column">
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Valores da Apple</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-responsibility" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/accessibility/" data-analytics-title="accessibility">Acessibilidade</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/environment/" data-analytics-title="environment">Ambiente</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/privacy/" data-analytics-title="privacy">Privacidade</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/supplier-responsibility/" data-analytics-title="supplier responsibility">Responsabilidade dos fornecedores</a></li>
-				</ul>
-			</div>
-			<div class="ac-gf-directory-column-section">
-				<h3 class="ac-gf-directory-column-section-title">
-					<span class="ac-gf-directory-column-section-title-text">Acerca da Apple</span>
-					<button class="ac-gf-directory-column-section-title-button" disabled>
-						<span class="ac-gf-directory-column-section-title-icon" aria-hidden="true"></span>
-					</button>
-				</h3>
-				<ul id="footer-directory-column-section-about" class="ac-gf-directory-column-section-list" role="list">
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/newsroom/" data-analytics-title="newsroom">Newsroom</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/leadership/" data-analytics-title="apple leadership">Liderança Apple</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/careers/pt/" data-analytics-title="career opportunities">Oportunidades de carreira</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/legal/warranty/statutoryrights.html" data-analytics-title="warranty">Garantia Legal</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="https://investor.apple.com/" data-analytics-title="investors" data-analytics-exit-link>Investidores</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/compliance/" data-analytics-title="ethics and compliance">Ética e conformidade</a></li>
-					<li class="ac-gf-directory-column-section-item" role="listitem"><a class="ac-gf-directory-column-section-link" href="/pt/contact/" data-analytics-title="contact apple">Contactar a Apple</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sectionTitles = document.querySelectorAll('.ac-gf-directory-column-section-title');
-    sectionTitles.forEach(title => {
-      title.addEventListener('click', function() {
-        this.nextElementSibling.classList.toggle('show');
-        this.querySelector('.arrow-down').classList.toggle('rotate');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sectionTitles = document.querySelectorAll('.ac-gf-directory-column-section-title');
+      sectionTitles.forEach(title => {
+        title.addEventListener('click', function() {
+          this.nextElementSibling.classList.toggle('show');
+          this.querySelector('.arrow-down').classList.toggle('rotate');
+        });
       });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>

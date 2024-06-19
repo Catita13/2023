@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +9,83 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
         body {
-            background-color: #121212;
-            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Orbitron', sans-serif;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
             margin: 2rem auto;
             max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #00ffcc;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ffcc;
+            outline: none;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
         }
 
         .projects-card {
             margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 16px;
             overflow: hidden;
-            background-color: #1e1e1e;
+            background: rgba(30, 30, 30, 0.9);
             border: 1px solid #444;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
         .projects-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 24px rgba(0, 255, 204, 0.5);
         }
 
         .projects-card a {
-            color: #fff;
+            color: #00ffcc;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .projects-card a:hover {
-            color: #00ff00;
+            color: #ff00ff;
         }
 
         .img-featured-project {
@@ -49,7 +94,12 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .projects-card:hover .img-featured-project {
+            transform: scale(1.05);
         }
 
         .sector p {
@@ -59,45 +109,26 @@
             color: #aaa;
         }
 
-        .search-bar {
-            margin-bottom: 2rem;
-        }
-
-        .search-bar input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #00ff00;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-            background-color: #333;
-            color: #fff;
-        }
-
-        .search-bar input[type="text"]:focus {
-            border-color: #ff00ff;
-        }
-
         .search-results {
             margin-top: 2rem;
             color: #ccc;
         }
 
         .search-results a {
-            color: #00ff00;
+            color: #00ffcc;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .search-results a:hover {
-            color: #fff;
+            color: #ff00ff;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1 style="text-align: center; font-size: 50px;">Projects</h1>
+        <h1>Projects</h1>
         <!-- Search Bar -->
         <div class="search-bar">
             <input type="text" id="searchInput" oninput="searchProjects()" placeholder="Search for projects...">
@@ -237,6 +268,7 @@
                     </div>
                 </a>
             </div>
+        </div>
 
         <div class="row" id="projectsContainer"></div>
 
@@ -270,4 +302,5 @@
         }
     </script>
 </body>
+
 </html>

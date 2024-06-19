@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Box</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --main-bg-color: #221F20;
+            --secondary-bg-color: #333;
+            --hover-bg-color: #444;
+            --text-color: #FFFFFF;
+            --highlight-color: #f0f0f0;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .interactive-container {
+            width: 100%;
+            background-color: var(--main-bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .interactive-squares {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .interactive-square {
+            flex: 1 1 100px;
+            margin: 5px;
+            padding: 20px;
+            background-color: var(--secondary-bg-color);
+            color: var(--text-color);
+            text-align: center;
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+        }
+
+        .interactive-square:hover {
+            transform: scale(1.05);
+            background-color: var(--hover-bg-color);
+        }
+
+        .interactive-square i, .interactive-square p {
+            position: relative;
+            z-index: 1;
+            margin: 5px 0;
+        }
+
+        .interactive-square i {
+            font-size: 1.5rem;
+        }
+
+        .interactive-square::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            z-index: 0;
+            transition: background 0.3s ease;
+        }
+
+        .interactive-square.active::before {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .interactive-rectangle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--hover-bg-color);
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            width: 100%;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .interactive-rectangle p {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+
+        .interactive-rectangle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .interactive-square {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="interactive-container" aria-live="polite">
+        <div class="interactive-squares">
+            <div class="interactive-square" id="square1" role="button" aria-label="VR & AR" tabindex="0">
+                <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
+                <p>VR & AR</p>
+            </div>
+            <div class="interactive-square" id="square2" role="button" aria-label="3D Virtual Tours" tabindex="0">
+                <i class="fas fa-map-pin" aria-hidden="true"></i>
+                <p>3D Virtual Tours</p>
+            </div>
+            <div class="interactive-square" id="square3" role="button" aria-label="3D Video Animation" tabindex="0">
+                <i class="fas fa-photo-film" aria-hidden="true"></i>
+                <p>3D Video Animation</p>
+            </div>
+            <div class="interactive-square" id="square4" role="button" aria-label="3D Still Images" tabindex="0">
+                <i class="far fa-images" aria-hidden="true"></i>
+                <p>3D Still Images</p>
+            </div>
+            <div class="interactive-square" id="square5" role="button" aria-label="3D Products" tabindex="0">
+                <i class="fas fa-couch" aria-hidden="true"></i>
+                <p>3D Products</p>
+            </div>
+        </div>
+        <div class="interactive-rectangle" id="rectangle">
+            <p>Click on a square to see more information here.</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const content = {
+                square1: {
+                    text: "Enter new worlds through our immersive and interactive hyper-realistic AR & VR services.",
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/5.jpg"
+                },
+                square2: {
+                    text: "Make the experience richer and more engaging with our realistic 3D Virtual Tours.",
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/01/9.jpg"
+                },
+                square3: {
+                    text: "Enhance your storytelling with 3D video animations.",
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/06/Imagem-3_-Exterior-scaled.jpg"
+                },
+                square4: {
+                    text: "Give life to each project with eye-catching 3D architectural visualization images.",
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/02/Lobby_Detail.jpg"
+                },
+                square5: {
+                    text: "Virtually replicate your product to a 3D model in a hyper-realistic manner.",
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/Straw-Chair-Horizontal.jpg"
+                }
+            };
+
+            const textContainer = document.getElementById('rectangle');
+            const squaresContainer = document.querySelector('.interactive-squares');
+
+            // Event delegation for squares
+            squaresContainer.addEventListener('click', function (event) {
+                const square = event.target.closest('.interactive-square');
+                if (!square) return;
+
+                const squareId = square.id;
+                if (content[squareId]) {
+                    updateContent(squareId, square);
+                }
+            });
+
+            function updateContent(squareId, square) {
+                textContainer.innerHTML = `<p>${content[squareId].text}</p>`;
+                textContainer.style.backgroundImage = `url(${content[squareId].background})`;
+
+                // Remove active class from all squares and add to the clicked one
+                document.querySelectorAll('.interactive-square').forEach(sq => sq.classList.remove('active'));
+                square.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

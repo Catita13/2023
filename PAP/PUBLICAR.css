@@ -17,7 +17,7 @@ ul {
 li {
     display: inline;
     margin-left: 13px;
-    margin-right: 10px;/* Add spacing between list items */
+    margin-right: 10px; /* Add spacing between list items */
 }
 
 a {
@@ -57,6 +57,25 @@ header {
     margin-bottom: 10px;
 }
 
+.photo-preview {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.comment-preview {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
 .photos {
     max-width: 800px;
     margin: 20px auto;
@@ -85,4 +104,18 @@ header {
     color: #fff;
     padding: 5px;
     text-align: center;
+}
+
+.photo button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.photo button:hover {
+    background-color: #d32f2f;
 }

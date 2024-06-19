@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="Logo.png">
     <link rel="stylesheet" href="PUBLICAR.css">
-    <script src="PUBLICAR.js"></script>
+    <script src="PUBLICAR.js" defer></script>
     <title>Sports4Sustainability</title>
 </head>
 <body>
@@ -20,9 +20,14 @@
     </nav>
 
     <section class="photo-upload">
-        <input type="file" id="photoInput" accept="image/*">
-        <textarea id="commentInput" placeholder="Adiciona aqui a tua descrição!"></textarea>
-        <button onclick="uploadPhoto()">PUBLICA</button>
+        <input type="file" id="photoInput" accept="image/*" onchange="showPreview()">
+        <textarea id="commentInput" placeholder="Adiciona aqui a tua descrição!" oninput="showPreview()"></textarea>
+        <button onclick="uploadPhoto()">PUBLICAR</button>
+        
+        <div id="photoPreview" class="photo-preview">
+            <img id="previewImage" src="" alt="Photo Preview" style="display: none;">
+            <div id="previewComment" class="comment-preview"></div>
+        </div>
     </section>
 </body>
 </html>

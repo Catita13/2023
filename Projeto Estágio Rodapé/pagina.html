@@ -6,28 +6,22 @@
     <title>Interactive Box</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --main-bg-color: #221F20;
-            --secondary-bg-color: #333;
-            --hover-bg-color: #444;
-            --text-color: #FFFFFF;
-            --highlight-color: #f0f0f0;
-        }
-
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--main-bg-color);
-            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0d0d0d;
+            color: #00FFB3;
             width: 100%;
             height: 100%;
             overflow-x: hidden;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
         .interactive-container {
             width: 100%;
-            background-color: var(--main-bg-color);
+            background-color: #0d0d0d;
             border-radius: 10px;
             overflow: hidden;
             padding: 10px;
@@ -36,22 +30,22 @@
 
         .interactive-squares {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             margin-bottom: 10px;
-            flex-wrap: wrap;
         }
 
         .interactive-square {
-            flex: 1 1 100px;
+            flex: 1 1 18%;
             margin: 5px;
             padding: 20px;
-            background-color: var(--secondary-bg-color);
-            color: var(--text-color);
+            background-color: #1a1a1a;
+            color: #00FFB3;
             text-align: center;
             border-radius: 5px;
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -59,11 +53,13 @@
             justify-content: center;
             align-items: center;
             height: 150px;
+            box-shadow: 0 0 15px rgba(0, 255, 179, 0.3);
         }
 
         .interactive-square:hover {
-            transform: scale(1.05);
-            background-color: var(--hover-bg-color);
+            transform: scale(1.1);
+            background-color: #333;
+            box-shadow: 0 0 25px rgba(0, 255, 179, 0.5);
         }
 
         .interactive-square i, .interactive-square p {
@@ -73,7 +69,7 @@
         }
 
         .interactive-square i {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         .interactive-square::before {
@@ -98,7 +94,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background-color: var(--hover-bg-color);
+            background-color: #222;
             text-align: center;
             background-size: cover;
             background-position: center;
@@ -106,11 +102,12 @@
             width: 100%;
             position: relative;
             border-radius: 5px;
+            box-shadow: 0 0 25px rgba(0, 255, 179, 0.5);
         }
 
         .interactive-rectangle p {
             margin: 0;
-            color: var(--text-color);
+            color: #00FFB3;
             font-size: 1.2rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             z-index: 1;
@@ -127,88 +124,143 @@
             z-index: 0;
         }
 
+        .interactive-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            background-color: #00FFB3;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 255, 179, 0.5);
+        }
+
+        .interactive-button:hover {
+            background-color: #00e699;
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 255, 179, 0.8);
+        }
+
+        @media (max-width: 1200px) {
+            .interactive-square {
+                flex: 1 1 22%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .interactive-square {
+                flex: 1 1 28%;
+            }
+            .interactive-rectangle p {
+                font-size: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .interactive-square {
+                flex: 1 1 45%;
                 height: 100px;
+            }
+            .interactive-rectangle p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .interactive-square {
+                flex: 1 1 90%;
+                height: 100px;
+            }
+            .interactive-rectangle {
+                height: 200px;
+            }
+            .interactive-rectangle p {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="interactive-container" aria-live="polite">
+    <div class="interactive-container">
         <div class="interactive-squares">
-            <div class="interactive-square" id="square1" role="button" aria-label="VR & AR" tabindex="0">
-                <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
+            <div class="interactive-square" id="square1">
+                <i class="fas fa-vr-cardboard"></i>
                 <p>VR & AR</p>
             </div>
-            <div class="interactive-square" id="square2" role="button" aria-label="3D Virtual Tours" tabindex="0">
-                <i class="fas fa-map-pin" aria-hidden="true"></i>
+            <div class="interactive-square" id="square2">
+                <i class="fas fa-map-pin"></i>
                 <p>3D Virtual Tours</p>
             </div>
-            <div class="interactive-square" id="square3" role="button" aria-label="3D Video Animation" tabindex="0">
-                <i class="fas fa-photo-film" aria-hidden="true"></i>
+            <div class="interactive-square" id="square3">
+                <i class="fas fa-photo-film"></i>
                 <p>3D Video Animation</p>
             </div>
-            <div class="interactive-square" id="square4" role="button" aria-label="3D Still Images" tabindex="0">
-                <i class="far fa-images" aria-hidden="true"></i>
+            <div class="interactive-square" id="square4">
+                <i class="far fa-images"></i>
                 <p>3D Still Images</p>
             </div>
-            <div class="interactive-square" id="square5" role="button" aria-label="3D Products" tabindex="0">
-                <i class="fas fa-couch" aria-hidden="true"></i>
+            <div class="interactive-square" id="square5">
+                <i class="fas fa-couch"></i>
                 <p>3D Products</p>
             </div>
         </div>
         <div class="interactive-rectangle" id="rectangle">
             <p>Click on a square to see more information here.</p>
+            <a class="interactive-button" id="interactive-button" href="#" style="display: none;">Projects</a>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const content = {
                 square1: {
                     text: "Enter new worlds through our immersive and interactive hyper-realistic AR & VR services.",
-                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/5.jpg"
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/5.jpg",
+                    link: "https://miragevirtualreality.com/services/vr-ar/"
                 },
                 square2: {
                     text: "Make the experience richer and more engaging with our realistic 3D Virtual Tours.",
-                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/01/9.jpg"
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/01/9.jpg",
+                    link: "https://miragevirtualreality.com/services/3d-virtual-tours/"
                 },
                 square3: {
                     text: "Enhance your storytelling with 3D video animations.",
-                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/06/Imagem-3_-Exterior-scaled.jpg"
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/06/Imagem-3_-Exterior-scaled.jpg",
+                    link: "https://miragevirtualreality.com/services/3d-video-animation/"
                 },
                 square4: {
                     text: "Give life to each project with eye-catching 3D architectural visualization images.",
-                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/02/Lobby_Detail.jpg"
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2022/02/Lobby_Detail.jpg",
+                    link: "https://miragevirtualreality.com/services/3d-still-images/"
                 },
                 square5: {
                     text: "Virtually replicate your product to a 3D model in a hyper-realistic manner.",
-                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/Straw-Chair-Horizontal.jpg"
+                    background: "https://miragevirtualreality.com/wp-content/uploads/2020/11/Straw-Chair-Horizontal.jpg",
+                    link: "https://miragevirtualreality.com/services/3d-products/"
                 }
             };
 
             const textContainer = document.getElementById('rectangle');
-            const squaresContainer = document.querySelector('.interactive-squares');
+            const squares = document.querySelectorAll('.interactive-square');
+            const button = document.getElementById('interactive-button');
 
-            // Event delegation for squares
-            squaresContainer.addEventListener('click', function (event) {
-                const square = event.target.closest('.interactive-square');
-                if (!square) return;
+            squares.forEach(square => {
+                square.addEventListener('click', function() {
+                    const squareId = this.id;
+                    if (squareId && content[squareId]) {
+                        textContainer.innerHTML = `<p>${content[squareId].text}</p><a class="interactive-button" id="interactive-button" href="${content[squareId].link}" style="display: block;">Projects</a>`;
+                        textContainer.style.backgroundImage = `url(${content[squareId].background})`;
 
-                const squareId = square.id;
-                if (content[squareId]) {
-                    updateContent(squareId, square);
-                }
+                        squares.forEach(sq => sq.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
             });
-
-            function updateContent(squareId, square) {
-                textContainer.innerHTML = `<p>${content[squareId].text}</p>`;
-                textContainer.style.backgroundImage = `url(${content[squareId].background})`;
-
-                // Remove active class from all squares and add to the clicked one
-                document.querySelectorAll('.interactive-square').forEach(sq => sq.classList.remove('active'));
-                square.classList.add('active');
-            }
         });
     </script>
 </body>

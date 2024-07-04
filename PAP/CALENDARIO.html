@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Logo.png">
+    <link rel="stylesheet" href="CALENDARIO.css">
+    <script src="CALENDARIO.js" defer></script>
+    <title>Calendário - Sports4Sustainability</title>
+</head>
+<body>
+    <nav>
+        <a href="HOME.html"><img src="LogoNAV.png" alt="Logo"></a>
+        <ul>
+            <li><a href="PUBLICAR.html">PUBLICAR</a></li>
+            <li><a href="javascript:void(0);" onclick="refreshPage();" style="font-weight: bold; color: #000; text-decoration: none;">CALENDÁRIO</a></li>
+            <li><a href="PERFIL.html">PERFIL</a></li>
+        </ul>
+    </nav>
+
+    <section class="calendar-container">
+        <div class="month-navigation">
+            <button id="prevMonth" onclick="navigateMonth(-1)">&#10094;</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth" onclick="navigateMonth(1)">&#10095;</button>
+        </div>
+        <div id="calendar">
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days"></div>
+        </div>
+    </section>
+
+    <section class="event-form">
+        <h2>Add Event</h2>
+        <input type="text" id="eventTitle" placeholder="Event Title" required>
+        <input type="date" id="eventDate" required>
+        <textarea id="eventDescription" placeholder="Event Description"></textarea>
+        <button onclick="addEvent()">Add Event</button>
+    </section>
+
+    <!-- Event List Modal -->
+    <div id="eventListModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Events on <span id="modalDate"></span></h2>
+            <ul id="eventList"></ul>
+        </div>
+    </div>
+</body>
+</html>
